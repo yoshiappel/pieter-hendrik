@@ -1,16 +1,54 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import githublogo from './assets/githublogo.svg'
 import linkedinlogo from './assets/linkedinlogo.svg'
 import maillogo from './assets/maillogo.svg'
 import './App.css'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Popup from './Popup';
+import Header from './Header'
+import About from './About.tsx'
+
+function Typing() {
+  const text = "a software developer studying at Firda, Friesland";
+  const [displayed, setDisplayed] = useState("");
+  const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const typingSpeed = 80;
+  const deletingSpeed = 50;
+  const pauseTime = 2000; 
+
+  useEffect(() => {
+    var timeout: number | undefined;
+
+    if (!isDeleting && index < text.length) {
+      timeout = setTimeout(() => setIndex(index + 1), typingSpeed);
+    } else if (!isDeleting && index === text.length) {
+      timeout = setTimeout(() => setIsDeleting(true), pauseTime);
+    } else if (isDeleting && index > 0) {
+      timeout = setTimeout(() => setIndex(index - 1), deletingSpeed);
+    } else if (isDeleting && index === 0) {
+      setIsDeleting(false);
+    }
+
+    setDisplayed(text.slice(0, index));
+
+    return () => clearTimeout(timeout);
+  }, [index, isDeleting, text]);
+
+  return (
+    <p style={{ textDecoration: "none" }}>
+      {displayed}
+    </p>
+  );
+}
+
 
 const funFacts: string[] = [
   "I play the guitar 🎸",
   "I like C#",
   "I have been coding for 5 years",
   "I love metal music 🎶",
-  "I don't like php and java",
   "I got two birds called Lalo and Nina 🦅",
   "I'm in my third year of my study",
   "I'm currently learning WEM and Data modeling"
@@ -21,7 +59,7 @@ const getRandomFact = () => {
   return funFacts[index];
 };
 
-const App: React.FC = () => {
+const MainPage: React.FC = () => {
   const [popupVisible, setPopupVisible] = useState(false);
   const [randomFact, setRandomFact] = useState<string>("");
 
@@ -32,15 +70,15 @@ const App: React.FC = () => {
 
   return (
     <>
+      <section>
+        <Header></Header>
+      </section>
       <h1 className='title'>hey, I'm Pieter</h1>
       <p className='small'>(i like c#)</p>
-        <p>
-          a software developer studying at Firda <br></br>
-          Friesland, The Netherlands
-        </p>
+      <div id='current'><Typing></Typing></div>
       <div className="card">
         <p>currently interning at Maarsingh en van Steijn</p>
-        <p>I'm interested in game development</p>
+        <p>interested in game design and UI/UX</p>
         <div>
           <p className="random-fact" onClick={handleOpenPopup}>
             click here for a random fact about me!
@@ -68,6 +106,17 @@ const App: React.FC = () => {
         developed by Piet
       </p>
     </>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/About" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

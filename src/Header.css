@@ -1,0 +1,46 @@
+.Nav {
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    gap: 3%;  
+}
+
+.blink {
+    left: 1%;
+    position: absolute;
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
+
+.navbtn {
+    color: white;
+    letter-spacing: .12em;
+}
+
+.navbtn:hover {
+    color: rgb(180, 180, 180);
+    border-bottom: grey 1px solid;
+}

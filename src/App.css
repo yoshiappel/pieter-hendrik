@@ -5,6 +5,22 @@
   text-align: center;
 }
 
+section {
+  margin-bottom: 30%;
+}
+
+#current {
+  min-height: 5vh;
+}
+
+.cursor {
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
 .logo {
   height: 3em;
   padding: 1em;
@@ -16,14 +32,19 @@
   filter: drop-shadow(0 0 2em #e0e0e0aa);
 }
 
+.small {
+  display: none;
+  margin-top: 0;
+  margin-bottom: 2vh;
+  font-size: xx-small;
+}
+
 .title {
   margin: 0;
 }
 
-.small {
-  margin-top: 0;
-  margin-bottom: 2vh;
-  font-size: xx-small;
+.title:hover + .small {
+  display: block;
 }
 
 .card {
