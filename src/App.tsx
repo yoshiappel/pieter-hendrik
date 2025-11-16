@@ -1,16 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import React, { useState } from 'react';
 
-import githublogo from './assets/githublogo.svg'
-import linkedinlogo from './assets/linkedinlogo.svg'
-import maillogo from './assets/maillogo.svg'
-
 import './App.css'
 
 import Popup from './Popup';
 import Header from './Header'
 import About from './About.tsx'
 import Typing from './intro.tsx'
+import Contact from './Contact.tsx';
 
 const funFacts: string[] = [
   "I play the guitar 🎸",
@@ -38,9 +35,7 @@ const MainPage: React.FC = () => {
 
   return (
     <>
-      <section>
-        <Header></Header>
-      </section>
+      <Header></Header>
       <h1 className='title'>hey, I'm Pieter</h1>
       <p className='small'>(i like c#)</p>
       <div id='intro'><Typing></Typing></div>
@@ -58,20 +53,9 @@ const MainPage: React.FC = () => {
           </Popup>
         </div>
       </div>
-      <p>feel free to contact me via,</p>
-      <div className='socials-card'>
-        <a href="https://github.com/yoshiappel" target="_blank">
-          <img src={githublogo} className="logo" alt="Github logo" />
-        </a>
-        <a href="&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#112;&#105;&#101;&#116;&#104;&#098;&#111;&#116;&#101;&#114;&#104;&#111;&#101;&#107;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;" target="_blank">
-          <img src={maillogo} className="logo" alt="Mail logo" />
-        </a>
-        <a href="https://linkedin.com/in/piethendrikboterhoek" target="_blank">
-          <img src={linkedinlogo} className="logo" alt="Linkedin logo" />
-        </a>
-      </div>
+      <Contact></Contact>
       <p className="footer">
-        developed by Piet
+        developed by Piet Hendrik Boterhoek ©2025
       </p>
     </>
   )

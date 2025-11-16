@@ -2,7 +2,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    position: fixed;
+    position: absolute;
     display: flex;
     justify-content: center;
 }
@@ -39,6 +39,7 @@ a:hover {
     padding: 0 1%;
     color: white;
     letter-spacing: .12em;
+    transition: all 0.25s linear;
 }
 
 .navbtn:hover {

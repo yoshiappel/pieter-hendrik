@@ -11,7 +11,7 @@ export function PageName() {
     return (
         <div>
             <a className='blink' style={{cursor: "default", textDecoration: "none"}}>&#x3E;</a>
-        <span className='blink' style={{ marginLeft: "1%" }}>{pageName}</span>
+        <span className='blink' style={{ marginLeft: "1em" }}>{pageName}</span>
         </div>
     );
 }
@@ -19,12 +19,14 @@ export function PageName() {
 export default function Header() {
     return (
         <>
+        <section>
             <div className="Nav">
                 <PageName></PageName>
                 <Link to="/" className='navbtn' data-text="Home">Home</Link>
                 <Link to="/About" className='navbtn' data-text="About">About</Link>
                 <Link to="/" className='navbtn' data-text="MyWork">My Work</Link>
             </div>
+        </section>
         </>
     );
 }
